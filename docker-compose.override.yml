@@ -1,0 +1,5 @@
+services:
+  laravel.test:
+    ports:
+      - "8080:80"  # Cambiar a otro puerto si el 8080 también está ocupado
+

@@ -1,0 +1,4 @@
+"require": {
+  "laravel/framework": "^9.0",
+  ...
+}

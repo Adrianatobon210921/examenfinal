@@ -1,0 +1,23 @@
+{
+    "name": "adriana/example-app",
+    "description": "A simple Laravel application for managing tasks",
+    "type": "project",
+    "require": {
+        "php": "^8.1", 
+        "laravel/framework": "^10.0"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Adriana\\ExampleApp\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Adriana",
+            "email": "your-email@example.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
