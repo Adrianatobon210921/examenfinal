@@ -1,6 +1,6 @@
 name: CI/CD for Laravel
 
-on:
+  on:
   push:
     branches:
       - dev  # Se ejecuta cuando hay un push en la rama dev
