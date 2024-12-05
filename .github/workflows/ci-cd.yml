@@ -1,33 +1,35 @@
-name: CI/CD for Laravel
+name: CI/CD Pipeline
 
 on:
   push:
     branches:
       - dev
+      - main
   pull_request:
     branches:
       - dev
+      - main
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
+      - name: Checkout repository
+        uses: actions/checkout@v2
 
-    - name: Set up PHP
-      uses: shivammathur/setup-php@v2
-      with:
-        php-version: '8.2'
-        extensions: mbstring, bcmath, xml, curl
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          extensions: mbstring, bcmath, xml, curl
 
-    - name: Install dependencies
-      run: |
-        cd example-app
-        composer install --no-interaction --prefer-dist
+      - name: Install dependencies
+        run: |
+          cd example-app
+          composer install --no-interaction --prefer-dist
 
-    - name: Run PHPUnit tests
-      run: |
-        cd example-app
-        ./vendor/bin/phpunit
+      - name: Run PHPUnit tests
+        run: |
+          cd example-app
+          ./vendor/bin/phpunit
