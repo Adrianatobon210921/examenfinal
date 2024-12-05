@@ -1,34 +1,33 @@
 name: CI/CD for Laravel
 
-  on:
+on:
   push:
     branches:
-      - dev  # Se ejecuta cuando hay un push en la rama dev
+      - dev
   pull_request:
     branches:
-      - dev  # Se ejecuta cuando se crea un PR hacia la rama dev
+      - dev
 
 jobs:
   build:
-    runs-on: ubuntu-latest  # Define el sistema operativo para ejecutar las acciones
+    runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2  # Clona el repositorio en el entorno de GitHub Actions
+    - name: Checkout repository
+      uses: actions/checkout@v2
 
-      - name: Set up PHP
-        uses: shivammathur/setup-php@v2  # Establece la versión de PHP y las extensiones necesarias
-        with:
-          php-version: '8.2'  # Versión de PHP a usar
-          extensions: mbstring, bcmath, xml, curl  # Extensiones necesarias para Laravel
+    - name: Set up PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '8.2'
+        extensions: mbstring, bcmath, xml, curl
 
-      - name: Install dependencies
-        run: |
-          cd example-app  # Navega a tu carpeta donde está el proyecto Laravel
-          composer install --no-interaction --prefer-dist  # Instala las dependencias de Laravel
+    - name: Install dependencies
+      run: |
+        cd example-app
+        composer install --no-interaction --prefer-dist
 
-      - name: Run PHPUnit tests
-        run: |
-          cd example-app  # Asegúrate de estar en la carpeta del proyecto
-          php artisan test  # Ejecuta las pruebas de PHPUnit (Laravel)
-
+    - name: Run PHPUnit tests
+      run: |
+        cd example-app
+        ./vendor/bin/phpunit
